@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functionsHelpers1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obelaizi <obelaizi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: obelaizi <obelaizi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 11:12:14 by obelaizi          #+#    #+#             */
-/*   Updated: 2023/03/09 11:34:14 by obelaizi         ###   ########.fr       */
+/*   Updated: 2023/03/09 17:12:12 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,30 @@ char	*get_path(char **env)
 
 int	handle_parsing(char **argv, int argc)
 {
-	if (argc != 5)
+	if (argc != 5 && argv)
 		return (ft_print("ERROR\nDude the number of arguments is sus ;)", 2), 1);
 	return (0);
+}
+
+char	**path_cmd(char **paths, char *cmd)
+{
+	int		i;
+	char	**path;
+	char	*tmp;
+
+	i = 0;
+	tmp = 0;
+	path = ft_split(cmd, ' ');
+	cmd = ft_strjoin("/", cmd);
+	while (paths[i])
+	{
+		if (tmp)
+			free(tmp);
+		tmp = ft_strjoin(paths[i], cmd);
+		if (!access(tmp, F_OK))
+			return (free(cmd), free(*path), *path = tmp, path);
+		i++;
+	}
+	free_str(path);
+	return (free(tmp), free(cmd), NULL);
 }

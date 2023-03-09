@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functionsLibft1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obelaizi <obelaizi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: obelaizi <obelaizi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 11:21:56 by obelaizi          #+#    #+#             */
-/*   Updated: 2023/03/09 11:33:09 by obelaizi         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:29:16 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,33 @@ void	ft_print(const char *s, int fd)
 	if (!s)
 		return ;
 	write(fd, s, ft_strlen(s));
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*result;
+	size_t	size;
+	size_t	i;
+	int		j;
+
+	if (!s1 || !s2)
+		return (0);
+	i = 0;
+	j = 0;
+	size = ft_strlen(s1) + ft_strlen(s2);
+	result = malloc(size + 1);
+	if (!result)
+		return (0);
+	while (i < size)
+	{
+		while (i < ft_strlen(s1))
+		{
+			result[i] = s1[i];
+			i++;
+		}
+		if (!(*s2))
+			break ;
+		result[i++] = s2[j++];
+	}
+	return (result[i] = 0, result);
 }
