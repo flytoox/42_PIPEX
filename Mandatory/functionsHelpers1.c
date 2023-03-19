@@ -6,7 +6,7 @@
 /*   By: obelaizi <obelaizi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 11:12:14 by obelaizi          #+#    #+#             */
-/*   Updated: 2023/03/09 17:12:12 by obelaizi         ###   ########.fr       */
+/*   Updated: 2023/03/11 19:20:06 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,16 @@ char	**path_cmd(char **paths, char *cmd)
 	i = 0;
 	tmp = 0;
 	path = ft_split(cmd, ' ');
-	cmd = ft_strjoin("/", cmd);
+	if (!access(path[0], F_OK))
+		return (path);
+	cmd = ft_strjoin("/", path[0]);
 	while (paths[i])
 	{
 		if (tmp)
 			free(tmp);
 		tmp = ft_strjoin(paths[i], cmd);
 		if (!access(tmp, F_OK))
-			return (free(cmd), free(*path), *path = tmp, path);
+			return (free(cmd), free(path[0]), path[0] = tmp, path);
 		i++;
 	}
 	free_str(path);
