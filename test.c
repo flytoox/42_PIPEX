@@ -2,11 +2,13 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+#include <string.h>
 
 int main()
 {
-	int fd = open(".mm", O_CREAT | O_RDWR, 666);
-
-	write(fd, "mmmmmmmmm", 9);
-	write(fd, "\nhhhhhhhh", 9);
+	int s =0;
+	if (!s)
+		printf("%d", strncmp("hh", "h\n", strlen("h\n") - 1));
+	else
+		printf("mm");
 }
