@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obelaizi <obelaizi@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: obelaizi <obelaizi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:55:36 by obelaizi          #+#    #+#             */
-/*   Updated: 2023/03/15 17:20:41 by obelaizi         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:51:46 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,10 @@ void	free_str(char **str);
 char	**path_cmd(char **paths, char *cmd);
 char	*get_path(char **env);
 int		handle_parsing(char **argv, int argc);
+void	first_cmd(int fd[], int files[], char **path);
+void	last_cmd(int fd[], int files[], char **path);
+void	middle_cmd(int fd[], int files[], char **path, int check);
+void	execute_cmd1(int fd[], int file_in, int file_out, char **path);
+void	execute_cmd2(int fd[], int file_in, int file_out, char **path);
 
 #endif

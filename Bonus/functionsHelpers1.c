@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functionsHelpers1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obelaizi <obelaizi@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: obelaizi <obelaizi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 11:12:14 by obelaizi          #+#    #+#             */
-/*   Updated: 2023/03/21 22:55:46 by obelaizi         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:49:20 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ char	**path_cmd(char **paths, char *cmd)
 	i = 0;
 	tmp = 0;
 	path = ft_split(cmd, ' ');
+	if (!path)
+		return (perror("pipex"), exit(1), NULL);
 	if (!access(path[0], F_OK))
 		return (path);
 	cmd = ft_strjoin("/", path[0]);
@@ -52,5 +54,6 @@ char	**path_cmd(char **paths, char *cmd)
 		i++;
 	}
 	free_str(path);
-	return (free(tmp), free(cmd), NULL);
+	free(tmp);
+	return (free(cmd), ft_print("Be careful about ur cmds", 2), exit(1), NULL);
 }
