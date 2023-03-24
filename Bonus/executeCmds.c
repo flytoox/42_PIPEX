@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mainHelper.c                                       :+:      :+:    :+:   */
+/*   executeCmds.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obelaizi <obelaizi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 16:49:53 by obelaizi          #+#    #+#             */
-/*   Updated: 2023/03/22 16:50:39 by obelaizi         ###   ########.fr       */
+/*   Updated: 2023/03/23 20:25:53 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 void	first_cmd(int fd[], int files[], char **path)
 {
+	close(fd[0]);
 	dup2(fd[1], STDOUT_FILENO);
+	close(files[1]);
 	dup2(files[0], STDIN_FILENO);
 	close(files[0]);
-	close(files[1]);
-	close(fd[0]);
 	close(fd[1]);
 	execve(path[0], path, NULL);
+	perror("pipex");
+	exit(1);
 }
 
 void	last_cmd(int fd[], int files[], char **path)
@@ -33,6 +35,8 @@ void	last_cmd(int fd[], int files[], char **path)
 	close(files[1]);
 	close(files[2]);
 	execve(path[0], path, NULL);
+	perror("pipex");
+	exit(1);
 }
 
 void	middle_cmd(int fd[], int files[], char **path, int check)
@@ -49,6 +53,8 @@ void	middle_cmd(int fd[], int files[], char **path, int check)
 	close(files[1]);
 	close(files[2]);
 	execve(path[0], path, NULL);
+	perror("pipex");
+	exit(1);
 }
 
 void	execute_cmd1(int fd[], int file_in, int file_out, char **path)

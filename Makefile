@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: obelaizi <obelaizi@student.1337.ma>        +#+  +:+       +#+         #
+#    By: obelaizi <obelaizi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/05 16:53:56 by obelaizi          #+#    #+#              #
-#    Updated: 2023/03/15 17:21:34 by obelaizi         ###   ########.fr        #
+#    Updated: 2023/03/23 18:08:30 by obelaizi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
-FLAGS = 
+FLAGS = -Werror -Wall -Wextra
 
 SRCS = $(wildcard ./Bonus/*.c ./gnl/*.c)
 OBJS= $(SRCS:.c=.o)
@@ -26,10 +26,10 @@ all : $(NAME)
 $(NAME): $(OBJS)
 	@cc -g $(OBJS) -o $(NAME) 
 
-clean: 
-	@rm -f $(OBJS) $(OBJS_BONUS) 
+clean:
+	@rm -f $(OBJS) 
 
 fclean:clean
-	@rm -f $(NAME) $(NAME_BONUS)
+	@rm -f $(NAME)
 	
 re: fclean all

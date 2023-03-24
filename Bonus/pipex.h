@@ -6,7 +6,7 @@
 /*   By: obelaizi <obelaizi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:55:36 by obelaizi          #+#    #+#             */
-/*   Updated: 2023/03/22 16:51:46 by obelaizi         ###   ########.fr       */
+/*   Updated: 2023/03/23 20:55:32 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ void	last_cmd(int fd[], int files[], char **path);
 void	middle_cmd(int fd[], int files[], char **path, int check);
 void	execute_cmd1(int fd[], int file_in, int file_out, char **path);
 void	execute_cmd2(int fd[], int file_in, int file_out, char **path);
+int		fill_file(int fd, char **argv);
 
 #endif
